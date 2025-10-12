@@ -13,7 +13,7 @@ CREATE TABLE ksiegowosc.godziny (
     id_godziny SERIAL PRIMARY KEY,
     data DATE NOT NULL,
     liczba_godzin DECIMAL(5,2) NOT NULL,
-    id_pracownika INT NOT NULL REFERENCES ksiegowosc.pracownicy(id_pracownika)
+    id_pracownika INT NOT NULL REFERENCES ksiegowosc.pracownicy(id_pracownika) ON DELETE CASCADE
 );
 
 COMMENT ON TABLE ksiegowosc.godziny IS 'przepracowane pracowników';
