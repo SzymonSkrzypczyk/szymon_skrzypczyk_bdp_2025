@@ -12,6 +12,8 @@ services:
       - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+      # bruh
+      - /e/github_repos/szymon_skrzypczyk_bdp_2025/02:/data
 
 volumes:
   pgdata:
