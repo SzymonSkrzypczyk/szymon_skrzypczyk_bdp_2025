@@ -1,0 +1,17 @@
+version: '3.8'
+# mozna skipnac 3 punkt ;D
+services:
+  db:
+    image: postgis/postgis:latest
+    container_name: zajecia_02
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: root
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
