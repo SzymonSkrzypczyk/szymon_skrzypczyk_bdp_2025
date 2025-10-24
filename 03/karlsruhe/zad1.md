@@ -6,3 +6,4 @@
 5) `shp2pgsql -I data/03/karlsruhe/data/2018/T2018_KAR_POI_TABLE.shp poi_2018 | psql -U root -d root`
 6) `shp2pgsql -I data/03/karlsruhe/data/2019/T2019_KAR_POI_TABLE.shp poi_2019 | psql -U root -d root`
 7) `shp2pgsql -I data/03/karlsruhe/data/2019/T2019_KAR_STREETS.shp streets_2019 | psql -U root -d root`
+7) `shp2pgsql -I data/03/karlsruhe/data/2019/T2019_KAR_LAND_USE_A.shp land_use_a_2019 | psql -U root -d root`
