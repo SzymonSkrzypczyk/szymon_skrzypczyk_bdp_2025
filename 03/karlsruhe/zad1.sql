@@ -1,20 +1,12 @@
-DROP TABLE new_buildings;
-CREATE TABLE new_buildings AS
-SELECT b2019.*
+SELECT 
+    b2019.polygon_id,
+    b2019.name,
+    CASE
+        WHEN b2018.polygon_id IS NULL THEN 'nowy' 
+        WHEN ST_Area(ST_SymDifference(b2019.geom, b2018.geom)) > 1 THEN 'zmieniony'  --powierzchnia sie rozni
+    END AS status
 FROM buildings_2019 b2019
 LEFT JOIN buildings_2018 b2018
-  ON ST_DWithin(b2019.geom, b2018.geom, 1)
-WHERE b2018.gid IS NULL;
-
-DROP TABLE changed_buildings;
-CREATE TABLE changed_buildings AS
-SELECT DISTINCT b2019.*
-FROM buildings_2019 b2019
-JOIN buildings_2018 b2018
-  ON ST_Intersects(b2019.geom, b2018.geom)
-WHERE ST_Area(ST_SymDifference(b2019.geom, b2018.geom)) > 5;
-
-
-SELECT
-  (SELECT COUNT(*) FROM new_buildings),
-  (SELECT COUNT(*) FROM changed_buildings);
+    ON b2019.polygon_id = b2018.polygon_id
+WHERE b2018.polygon_id IS NULL 
+   OR ST_Area(ST_SymDifference(b2019.geom, b2018.geom)) > 5;
