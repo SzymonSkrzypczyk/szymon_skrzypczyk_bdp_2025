@@ -22,4 +22,8 @@ psql -U root -d zajecia_6 -c "CREATE EXTENSION IF NOT EXISTS postgis;"
 psql -U root -d zajecia_6 -c "CREATE EXTENSION IF NOT EXISTS postgis_raster;"
 ```
 
-
+## Eskport danych
+```bash
+apt-get update
+apt-get install -y gdal-bin libgdal-dev
+```
